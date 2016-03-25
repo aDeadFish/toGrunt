@@ -1,0 +1,33 @@
+<!DOCTYPE>
+<html>
+<head>
+	<style type="text/css">
+	div{border: 10px solid;border-color: #333 transparent transparent transparent;width: 0}
+	</style>
+</head>
+<body>
+	<div></div>
+
+<script>
+var n1=10;
+var n2=new Number(100);
+console.log(typeof n1);
+console.log(typeof n2);
+console.log(typeof n2.valueOf());
+//如上代码，通过valueOf()方法，可以将一个（Number/String/Boolean）对象，转换成其对应的基本类型。
+//在json.stringify方法中，如果遇到一个属性值的类型是object时，首先要排除 new Number/String/Boolean(...) 这三种情况，它就是通过valueOf来操作的。
+var object = {'a':1,'b':2,'c':3};
+
+var replacer = function(key,value){
+    if(value == 1) 
+        return undefined;
+    return value;
+};
+
+console.log(JSON.stringify(object,replacer));
+console.log(JSON.stringify(object,null,4));
+console.log(JSON.stringify(object,null,'\n'));
+console.log(JSON.stringify(object,null,'aa'));
+</script>
+</body>
+</html>
